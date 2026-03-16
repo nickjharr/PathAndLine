@@ -17,7 +17,7 @@
         <Parent guid="guidSHLMainMenu" id="IDG_VS_CODEWIN_TEXTEDIT"/>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>Copy path and line</ButtonText>
+          <ButtonText>Copy path and line number</ButtonText>
         </Strings>
       </Button>
     </Buttons>
