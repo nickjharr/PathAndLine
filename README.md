@@ -1,10 +1,10 @@
 # Copy Path and Line
 
-A Visual Studio 2022/2026 extension that adds a **Copy path and line** command to the code editor right-click context menu.
+A Visual Studio 2022/2026 extension that adds a **Copy path and line number** command to the code editor right-click context menu.
 
 ## What it does
 
-Right-clicking in any open source file gives you a **Copy path and line** entry. Clicking it copies the file's full path and the current cursor line to the clipboard:
+Right-clicking in any open source file gives you a **Copy path and line number** entry. Clicking it copies the file's full path and the current cursor line number to the clipboard:
 
 ```
 C:\Dev\MyProject\src\Foo.cs (Line: 42)
@@ -23,7 +23,7 @@ Install the `.vsix` file directly:
 
 ## Keyboard shortcut
 
-The command is registered as `EditorContextMenus.CodeWindow.Copypathandline` and can be bound to a keyboard shortcut via **Tools → Options → Environment → Keyboard**.
+The command is registered as `EditorContextMenus.CodeWindow.Copypathandlinenumber` and can be bound to a keyboard shortcut via **Tools → Options → Environment → Keyboard**.
 
 ## Supported versions
 
