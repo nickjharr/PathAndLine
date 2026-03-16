@@ -8,7 +8,7 @@
   <Commands package="guidPathAndLinePackage">
 
     <Buttons>
-      <Button guid="guidPathAndLinePackageCmdSet" id="CopyPathAndLineCommandId"
+      <Button guid="guidPathAndLinePackageCmdSet" id="CopyFullPathAndLineCommandId"
               priority="0x0450" type="Button">
         <!--
           IDG_VS_CODEWIN_TEXTEDIT (0x01C0) is the text-edit group in the code editor
@@ -17,7 +17,16 @@
         <Parent guid="guidSHLMainMenu" id="IDG_VS_CODEWIN_TEXTEDIT"/>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>Copy path and line number</ButtonText>
+          <ButtonText>Copy full path and line number</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidPathAndLinePackageCmdSet" id="CopyRelativePathAndLineCommandId"
+              priority="0x0451" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CODEWIN_TEXTEDIT"/>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Copy relative path and line number</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -28,7 +37,8 @@
     <!-- Must match PathAndLinePackage.PackageGuidString -->
     <GuidSymbol name="guidPathAndLinePackage" value="{29857012-cafc-4f0c-ae2a-2f7e87ca8d61}" />
     <GuidSymbol name="guidPathAndLinePackageCmdSet" value="{579afcee-f77f-4c6c-9714-00a26c99b186}">
-      <IDSymbol name="CopyPathAndLineCommandId" value="0x0100" />
+      <IDSymbol name="CopyFullPathAndLineCommandId"     value="0x0100" />
+      <IDSymbol name="CopyRelativePathAndLineCommandId" value="0x0101" />
     </GuidSymbol>
   </Symbols>
 
