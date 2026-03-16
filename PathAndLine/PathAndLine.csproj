@@ -46,6 +46,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CopyPathAndLineCommand.cs" />
+    <Compile Include="PathAndLineOptions.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PathAndLinePackage.cs" />
   </ItemGroup>

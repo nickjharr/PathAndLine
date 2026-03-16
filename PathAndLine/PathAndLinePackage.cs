@@ -12,11 +12,15 @@ namespace PathAndLine
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideAutoLoad(VSConstants.UICONTEXT.CodeWindow_string, PackageAutoLoadFlags.BackgroundLoad)]
+    [ProvideOptionPage(typeof(PathAndLineOptions), "Copy Path and Line", "General", 0, 0, true)]
     [Guid(PathAndLinePackage.PackageGuidString)]
     public sealed class PathAndLinePackage : AsyncPackage
     {
         // Must match Identity Id in source.extension.vsixmanifest and guidPathAndLinePackage in VSCommandTable.vsct.
         public const string PackageGuidString = "29857012-cafc-4f0c-ae2a-2f7e87ca8d61";
+
+        internal PathAndLineOptions Options =>
+            (PathAndLineOptions)GetDialogPage(typeof(PathAndLineOptions));
 
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
