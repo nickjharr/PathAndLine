@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable"
+              xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidPathAndLinePackage">
+
+    <Buttons>
+      <Button guid="guidPathAndLinePackageCmdSet" id="CopyPathAndLineCommandId"
+              priority="0x0450" type="Button">
+        <!--
+          IDG_VS_CODEWIN_TEXTEDIT (0x01C0) is the text-edit group in the code editor
+          right-click context menu. Confirmed present in vsshlids.h.
+        -->
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CODEWIN_TEXTEDIT"/>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Copy path and line</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+  </Commands>
+
+  <Symbols>
+    <!-- Must match PathAndLinePackage.PackageGuidString -->
+    <GuidSymbol name="guidPathAndLinePackage" value="{29857012-cafc-4f0c-ae2a-2f7e87ca8d61}" />
+    <GuidSymbol name="guidPathAndLinePackageCmdSet" value="{579afcee-f77f-4c6c-9714-00a26c99b186}">
+      <IDSymbol name="CopyPathAndLineCommandId" value="0x0100" />
+    </GuidSymbol>
+  </Symbols>
+
+</CommandTable>
