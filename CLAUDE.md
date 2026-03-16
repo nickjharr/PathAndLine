@@ -19,7 +19,11 @@ Output: `PathAndLine/bin/Release/PathAndLine.vsix`
 msbuild PathAndLine/PathAndLine.csproj /t:Restore
 ```
 
-**Test:** Open `PathAndLine.sln` in Visual Studio 2022 and press F5. This launches an isolated Experimental Instance of VS with the extension loaded. There are no automated tests — DTE2 interop requires a live VS instance.
+**Test:** Open `PathAndLine.sln` in Visual Studio 2022 and press F5. This launches an isolated Experimental Instance of VS with the extension loaded. The VSIX is written to `PathAndLine/bin/Debug/PathAndLine.vsix`. There are no automated tests — DTE2 interop requires a live VS instance.
+
+The two commands can be bound to keyboard shortcuts via **Tools → Options → Environment → Keyboard** using these names:
+- `EditorContextMenus.CodeWindow.Copyfullpathandlinenumber`
+- `EditorContextMenus.CodeWindow.Copyrelativepathandlinenumber`
 
 ## Architecture
 
