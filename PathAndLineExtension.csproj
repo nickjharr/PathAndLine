@@ -11,6 +11,10 @@
     <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory>
     <!-- Required: activates VSSDK build targets (VSCT compilation, VSIX packaging, pkgdef generation) -->
     <IsVsixProject>true</IsVsixProject>
+    <!-- Required: actually produces the .vsix file -->
+    <CreateVsixContainer>true</CreateVsixContainer>
+    <!-- Required: deploys the extension to the Experimental Instance on F5 -->
+    <DeployExtension>true</DeployExtension>
     <!-- F5 launches the VS Experimental Instance -->
     <StartAction>Program</StartAction>
     <StartProgram>$(DevEnvDir)devenv.exe</StartProgram>
