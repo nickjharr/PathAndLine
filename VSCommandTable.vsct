@@ -28,6 +28,7 @@
           BeforeQueryStatus and the item will always be visible.
         -->
         <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
         <Strings>
           <ButtonText>Copy path and line</ButtonText>
         </Strings>
@@ -37,7 +38,7 @@
   </Commands>
 
   <Symbols>
-    <GuidSymbol name="guidPathAndLinePackage" value="{39CFCAED-CFA9-4D6E-8C63-8E48281DBA00}" />
+    <GuidSymbol name="guidPathAndLinePackage" value="{39cfcaed-cfa9-4d6e-8c63-8e48281dba00}" />
     <GuidSymbol name="guidPathAndLinePackageCmdSet" value="{579AFCEE-F77F-4C6C-9714-00A26C99B186}">
       <IDSymbol name="CopyPathAndLineGroup"     value="0x1020" />
       <IDSymbol name="CopyPathAndLineCommandId" value="0x0100" />
