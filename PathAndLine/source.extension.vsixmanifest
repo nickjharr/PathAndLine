@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
-  <Metadata>
-    <Identity Id="PathAndLine.8f1d4233-9bb4-4558-8db3-aada83624a62" Version="1.0" Language="en-US" Publisher="Nick Harrington" />
-    <DisplayName>Copy Path and Line</DisplayName>
-    <Description>Adds "Copy full path and line number" and "Copy relative path and line number" commands to the text editor context menu.</Description>
-    <MoreInfo>https://github.com/nickjharr/PathAndLine</MoreInfo>
-    <License>LICENSE</License>
-    <Icon>icon.png</Icon>
-  </Metadata>
-  <Installation>
-    <!-- [17.0, 19.0) covers VS 2022 (17.x) and VS 2026 (18.x). TODO: confirm upper bound once VS 2026 SDK ships. -->
-    <InstallationTarget Id="Microsoft.VisualStudio.Community"    Version="[17.0, 19.0)">
-      <ProductArchitecture>amd64</ProductArchitecture>
-    </InstallationTarget>
-    <InstallationTarget Id="Microsoft.VisualStudio.Professional" Version="[17.0, 19.0)">
-      <ProductArchitecture>amd64</ProductArchitecture>
-    </InstallationTarget>
-    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise"   Version="[17.0, 19.0)">
-      <ProductArchitecture>amd64</ProductArchitecture>
-    </InstallationTarget>
-  </Installation>
-  <Dependencies>
-    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.7.2,)" />
-  </Dependencies>
-  <Prerequisites>
-    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,19.0)" DisplayName="Visual Studio core editor" />
-  </Prerequisites>
-  <Assets>
-    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
-  </Assets>
+    <Metadata>
+        <Identity Id="PathAndLine.8f1d4233-9bb4-4558-8db3-aada83624a62" Version="1.0" Language="en-US" Publisher="NickHarrington" />
+        <DisplayName>Copy Path and Line</DisplayName>
+        <Description xml:space="preserve">Adds "Copy full path and line number" and "Copy relative path and line number" commands to the text editor context menu.</Description>
+        <MoreInfo>https://github.com/nickjharr/PathAndLine</MoreInfo>
+        <License>LICENSE</License>
+        <Icon>icon.png</Icon>
+    </Metadata>
+    <Installation>
+        <!-- [17.0, 19.0) covers VS 2022 (17.x) and VS 2026 (18.x). TODO: confirm upper bound once VS 2026 SDK ships. -->
+        <InstallationTarget Id="Microsoft.VisualStudio.Community"    Version="[17.0, 19.0)">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Id="Microsoft.VisualStudio.Professional" Version="[17.0, 19.0)">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Id="Microsoft.VisualStudio.Enterprise"   Version="[17.0, 19.0)">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.7.2,)" />
+    </Dependencies>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,19.0)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+    </Assets>
 </PackageManifest>
