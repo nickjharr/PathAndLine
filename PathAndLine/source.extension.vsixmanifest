@@ -4,6 +4,9 @@
     <Identity Id="PathAndLine.8f1d4233-9bb4-4558-8db3-aada83624a62" Version="1.0" Language="en-US" Publisher="Nick Harrington" />
     <DisplayName>Copy Path and Line</DisplayName>
     <Description>Adds "Copy full path and line number" and "Copy relative path and line number" commands to the text editor context menu.</Description>
+    <MoreInfo>https://github.com/nickjharr/PathAndLine</MoreInfo>
+    <License>LICENSE</License>
+    <Icon>icon.png</Icon>
   </Metadata>
   <Installation>
     <!-- [17.0, 19.0) covers VS 2022 (17.x) and VS 2026 (18.x). TODO: confirm upper bound once VS 2026 SDK ships. -->
