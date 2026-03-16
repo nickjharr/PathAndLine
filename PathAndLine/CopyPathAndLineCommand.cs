@@ -18,10 +18,12 @@ namespace PathAndLine
         private const int RelativePathCommandId = 0x0101;
 
         private readonly DTE2 _dte;
+        private readonly PathAndLineOptions _options;
 
-        private CopyPathAndLineCommand(OleMenuCommandService commandService, DTE2 dte)
+        private CopyPathAndLineCommand(OleMenuCommandService commandService, DTE2 dte, PathAndLineOptions options)
         {
             _dte = dte;
+            _options = options;
 
             var fullPathItem = new OleMenuCommand(ExecuteFullPath, new CommandID(CommandSet, FullPathCommandId));
             fullPathItem.BeforeQueryStatus += BeforeQueryStatus;
@@ -42,7 +44,8 @@ namespace PathAndLine
             if (commandService == null || dte == null)
                 return;
 
-            _ = new CopyPathAndLineCommand(commandService, dte);
+            var options = ((PathAndLinePackage)package).Options;
+            _ = new CopyPathAndLineCommand(commandService, dte, options);
         }
 
         private void BeforeQueryStatus(object sender, EventArgs e)
@@ -75,7 +78,7 @@ namespace PathAndLine
             var fullPath = _dte.ActiveDocument.FullName;
             var lineNumber = ((TextSelection)_dte.ActiveDocument.Selection).ActivePoint.Line;
 
-            SetClipboard($"{fullPath} (Line: {lineNumber})");
+            SetClipboard($"{FormatPath(fullPath)} (Line: {lineNumber})");
         }
 
         private void ExecuteRelativePath(object sender, EventArgs e)
@@ -91,7 +94,7 @@ namespace PathAndLine
 
             var displayPath = GetRelativePathFromSolution(fullPath);
 
-            SetClipboard($"{displayPath} (Line: {lineNumber})");
+            SetClipboard($"{FormatPath(displayPath)} (Line: {lineNumber})");
         }
 
         /// <summary>
@@ -146,6 +149,9 @@ namespace PathAndLine
 
             return relativePath;
         }
+
+        private string FormatPath(string path) =>
+            _options.UseUnixPaths ? path.Replace('\\', '/') : path;
 
         private static void SetClipboard(string text)
         {
