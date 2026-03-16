@@ -41,6 +41,9 @@ namespace PathAndLineExtension
             var commandService = await package.GetServiceAsync(typeof(IMenuCommandService))
                 as OleMenuCommandService;
 
+            if (commandService == null || dte == null)
+                return;
+
             _ = new CopyPathAndLineCommand(commandService, dte);
         }
 
