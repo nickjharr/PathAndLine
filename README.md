@@ -34,6 +34,20 @@ Both commands can be bound to keyboard shortcuts via **Tools → Options → Env
 - `EditorContextMenus.CodeWindow.Copyfullpathandlinenumber`
 - `EditorContextMenus.CodeWindow.Copyrelativepathandlinenumber`
 
+## Configuration
+
+Open **Tools → Options → Copy Path and Line → General** to configure the extension.
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| Use Unix-style paths | Off | When enabled, path separators are forward slashes (`/`) instead of backslashes (`\`). Applies to both commands. |
+
+**Example output with Unix-style paths enabled:**
+```
+C:/Dev/MyProject/src/Foo.cs (Line: 42)
+src/Foo.cs (Line: 42)
+```
+
 ## Supported versions
 
 - Visual Studio 2022 (17.x)
