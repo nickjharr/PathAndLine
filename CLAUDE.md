@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Project Is
 
-A Visual Studio 2022/2026 VSIX extension that adds a "Copy path and line number" command to the code editor right-click menu. It copies the full file path and cursor line number to the clipboard as `C:\path\to\file.cs (Line: 42)`.
+A Visual Studio 2022/2026 VSIX extension that adds two commands to the code editor right-click menu: **Copy full path and line number** (absolute path) and **Copy relative path and line number** (relative to the solution directory). Both produce output in the format `path\to\file.cs (Line: 42)`.
 
 ## Build Commands
 
@@ -29,9 +29,7 @@ msbuild PathAndLine/PathAndLine.csproj /t:Restore
 
 - **`PathAndLinePackage.cs`** — `AsyncPackage` subclass. Initializes on first code window activation (`[ProvideAutoLoad]`), switches to the UI thread, acquires the `DTE2` COM object, and passes it to the command. No business logic.
 
-- **`CopyPathAndLineCommand.cs`** — Registers an `OleMenuCommand`. Has two handlers:
-  - `BeforeQueryStatus`: controls menu visibility. Always resets `Visible = false` first (sticky state), then shows the item only when `ActiveDocument` has a saved file path (`File.Exists(FullName)`).
-  - `Execute`: reads `ActiveDocument.FullName` and `Selection.ActivePoint.Line`, formats the string, writes to clipboard. Clipboard failures are silently swallowed (transient OS races).
+- **`CopyPathAndLineCommand.cs`** — Registers two `OleMenuCommand` instances (IDs `0x0100` and `0x0101`). Both share a `BeforeQueryStatus` handler that resets `Visible = false` then shows the item only when `ActiveDocument` has a saved file path. `ExecuteFullPath` copies the absolute path; `ExecuteRelativePath` computes the path relative to the solution directory via `Uri.MakeRelativeUri` (.NET 4.7.2-compatible), falling back to filename alone when no solution is open or the file is outside the solution tree. Clipboard failures are silently swallowed.
 
 **Supporting files:**
 - `VSCommandTable.vsct` — Declares command placement in `IDG_VS_CODEWIN_TEXTEDIT` (code editor right-click group) with `DynamicVisibility` flag. Without `DynamicVisibility`, `BeforeQueryStatus` never fires.
