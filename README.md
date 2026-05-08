@@ -16,6 +16,11 @@ C:\Dev\MyProject\src\Foo.cs (Line: 42)
 src\Foo.cs (Line: 42)
 ```
 
+When text spanning multiple lines is selected, both commands capture the full range:
+```
+src\Foo.cs (Lines: 42-58)
+```
+
 If no solution is open, the relative command falls back to the filename alone. Both commands are hidden for unsaved (untitled) files.
 
 ## Installation
@@ -40,13 +45,22 @@ Open **Tools → Options → Copy Path and Line → General** to configure the e
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| Use Unix-style paths | Off | When enabled, path separators are forward slashes (`/`) instead of backslashes (`\`). Applies to both commands. |
+| Use Unix-style paths | Off | When enabled, path separators are forward slashes (`/`) instead of backslashes (`\`). Always enabled when Markdown format is on. |
+| Use Markdown link format | Off | When enabled, output is a Markdown link instead of plain text. Automatically enables Unix-style paths. |
 
 **Example output with Unix-style paths enabled:**
 ```
 C:/Dev/MyProject/src/Foo.cs (Line: 42)
-src/Foo.cs (Line: 42)
+src/Foo.cs (Lines: 42-58)
 ```
+
+**Example output with Markdown link format enabled:**
+```
+[Foo.cs](C:/Dev/MyProject/src/Foo.cs#L42)
+[Foo.cs](src/Foo.cs#L42-L58)
+```
+
+The Markdown anchor syntax (`#L42`, `#L42-L58`) is recognised by GitHub, GitLab, VS Code, and AI coding tools such as OpenAI Codex.
 
 ## Supported versions
 
