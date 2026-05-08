@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="PathAndLine.8f1d4233-9bb4-4558-8db3-aada83624a62" Version="1.1.0" Language="en-US" Publisher="NickHarrington" />
+        <Identity Id="PathAndLine.8f1d4233-9bb4-4558-8db3-aada83624a62" Version="1.2.0" Language="en-US" Publisher="NickHarrington" />
         <DisplayName>Copy Path and Line</DisplayName>
         <Description xml:space="preserve">Adds "Copy full path and line number" and "Copy relative path and line number" commands to the text editor context menu.</Description>
         <MoreInfo>https://github.com/nickjharr/CopyPathAndLine</MoreInfo>
