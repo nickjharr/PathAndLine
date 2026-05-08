@@ -156,7 +156,7 @@ namespace PathAndLine
         {
             if (_options.UseMarkdownFormat)
             {
-                var fileName = Path.GetFileName(path);
+                var fileName = Path.GetFileName(path.Replace('/', '\\'));
                 var anchor = startLine == endLine ? $"#L{startLine}" : $"#L{startLine}-L{endLine}";
                 return $"[{fileName}]({path}{anchor})";
             }
