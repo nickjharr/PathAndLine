@@ -71,30 +71,32 @@ namespace PathAndLine
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            // Defensive null check — guards against race between BeforeQueryStatus and click.
             if (_dte.ActiveDocument == null)
                 return;
 
             var fullPath = _dte.ActiveDocument.FullName;
-            var lineNumber = ((TextSelection)_dte.ActiveDocument.Selection).ActivePoint.Line;
+            var selection = (TextSelection)_dte.ActiveDocument.Selection;
+            var startLine = selection.TopPoint.Line;
+            var endLine = selection.BottomPoint.Line;
 
-            SetClipboard($"{FormatPath(fullPath)} (Line: {lineNumber})");
+            SetClipboard(FormatOutput(FormatPath(fullPath), startLine, endLine));
         }
 
         private void ExecuteRelativePath(object sender, EventArgs e)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            // Defensive null check — guards against race between BeforeQueryStatus and click.
             if (_dte.ActiveDocument == null)
                 return;
 
             var fullPath = _dte.ActiveDocument.FullName;
-            var lineNumber = ((TextSelection)_dte.ActiveDocument.Selection).ActivePoint.Line;
+            var selection = (TextSelection)_dte.ActiveDocument.Selection;
+            var startLine = selection.TopPoint.Line;
+            var endLine = selection.BottomPoint.Line;
 
             var displayPath = GetRelativePathFromSolution(fullPath);
 
-            SetClipboard($"{FormatPath(displayPath)} (Line: {lineNumber})");
+            SetClipboard(FormatOutput(FormatPath(displayPath), startLine, endLine));
         }
 
         /// <summary>
@@ -148,6 +150,19 @@ namespace PathAndLine
                 return null;
 
             return relativePath;
+        }
+
+        private string FormatOutput(string path, int startLine, int endLine)
+        {
+            if (_options.UseMarkdownFormat)
+            {
+                var fileName = Path.GetFileName(path);
+                var anchor = startLine == endLine ? $"#L{startLine}" : $"#L{startLine}-L{endLine}";
+                return $"[{fileName}]({path}{anchor})";
+            }
+
+            var lineRef = startLine == endLine ? $"Line: {startLine}" : $"Lines: {startLine}-{endLine}";
+            return $"{path} ({lineRef})";
         }
 
         private string FormatPath(string path) =>
